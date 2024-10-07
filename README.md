@@ -11,4 +11,4 @@ This project is to create my own portfolio, showcasing my experience, skills, an
 
 ## My LinkedIn 💻
 
-[https://www.linkedin.com/in/amy-bohte/]
+https://www.linkedin.com/in/amy-bohte/
