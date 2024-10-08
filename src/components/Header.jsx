@@ -1,6 +1,13 @@
+import { useLocation } from "react-router-dom";
+
 import { myportfolio } from "../assets";
+import { navigation } from "../constants";
+
+import Button from "./Button";
 
 const Header = () => {
+  const pathName = useLocation();
+
   return (
     <div
       className="fixed top-0 z-50 bg-n-8/90 backdrop-blur-sm border-b 
@@ -13,15 +20,35 @@ const Header = () => {
 
         <nav
           className="hidden fixed top-[5rem] left-0 right-0 bottom-0 
-                     bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent"
+                    bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent"
         >
           <div
             className="relative z-2 flex flex-col items-center justify-center
-           m-auto lg:flex-row"
+                      m-auto lg:flex-row"
           >
-            1 2 3
+            {navigation.map((item) => (
+              <a
+                key={item.id}
+                href={item.url}
+                className={`block relative font-code text-2xl uppercase text-n-1 transition-colors 
+                        hover:text-color-1 lg:leading-5 lg:hover"text-n-1 xl:px-12 px-6 py-6 
+                          md:py-8 lg:-mr-0.25 lg:text-sx lg:font-semibold
+                          ${item.mobileOnly ? "lg:hidden" : ""}
+                          ${
+                            item.url === pathName.hash
+                              ? "z-2 lg:text-n-1"
+                              : "lg:text-n-1/50"
+                          }`}
+              >
+                {item.title}
+              </a>
+            ))}
           </div>
         </nav>
+
+        <Button className="hidden lg:flex" href="#cv">
+          Download my CV
+        </Button>
       </div>
     </div>
   );
